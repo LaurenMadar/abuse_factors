@@ -1,0 +1,101 @@
+{% load static %}
+
+<div class="d-flex flex-row container-fluid">
+    <div class="flex-column container-fluid">
+        {% if responsehome %}
+        <table class="table flex-grow-1 table-sm table-dark table-hover">
+            <thead>
+                <tr>
+                    <td colspan="8" class="flex-wrap">
+                        <nav aria-label="list pagination flex-wrap">
+                            <ul class="pagination pagination-sm justify-content-left flex-wrap">
+                                {% if page_obj.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                {% else %}
+                                <li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+                                {% endif %}
+                                {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
+                                {% if page_obj.number == i %}
+                                <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only"></span></span>
+                                </li>
+                                {% else %}
+                                {% if i == page_obj.paginator.ELLIPSIS %}
+                                <li class="page-item"><span class="page-link disabled"><strong>Page {{ page_obj.number }}</strong> of {{ page_obj.paginator.num_pages }}</span></li>
+                                {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                {% else %}
+                                <li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Year</th>
+                    <th>Response ID</th>
+                    <th>Gender</th>
+                    <th>Age Group</th>
+                    <th>Education Level</th>
+                    <th>Employment Category</th>
+                    <th>Marital Status</th>
+                    <th>Metro Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resp in responsehome %}
+                <tr>
+                    <td>{{ resp.year }}</td>
+                    <td><a href="{% url 'explore:responsedetail' resp.id %}">{{ resp.id }}</a></td>
+                    <td>{{ resp.get_gender_display }}</td>
+                    <td>{{ resp.get_age_display }}</td>
+                    <td>{{ resp.get_education_display }}</td>
+                    <td>{{ resp.get_employment_display }}</td>
+                    <td>{{ resp.get_married_display }}</td>
+                    <td>{{ resp.get_metrosize_display }}</td>
+
+                </tr>
+                {% endfor %}    
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8" class="flex-wrap">
+                        <nav aria-label="list pagination flex-wrap">
+                            <ul class="pagination pagination-sm justify-content-left flex-wrap">
+                                {% if page_obj.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                                {% else %}
+                                <li class="disabled page-item"><span class="page-link">&laquo;</span></li>
+                                {% endif %}
+                                {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
+                                {% if page_obj.number == i %}
+                                <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only"></span></span>
+                                </li>
+                                {% else %}
+                                {% if i == page_obj.paginator.ELLIPSIS %}
+                                <li class="page-item"><span class="page-link disabled"><strong>Page {{ page_obj.number }}</strong> of {{ page_obj.paginator.num_pages }}</span></li>
+                                {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                {% else %}
+                                <li class="disabled page-item"><span class="page-link">&raquo;</span></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        {% else %}
+        <h6>No historical survey responses are available. </h6>
+        {% endif %}
+    </div>
+</div>

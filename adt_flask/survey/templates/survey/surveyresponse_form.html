@@ -1,0 +1,134 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+  {% block sidebar %}
+  {% include 'survey/surveysidebar.html' %}
+  {% endblock %} 
+
+{% block workspace %}
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}survey{% endblock %}">
+
+
+{% block workspacebody %}
+<form method = "post" enctype="multipart/form-data" class="form-group" novalidate>
+	 {% csrf_token %}
+	 <input type="hidden" name="year" value="2023" />
+<div class="row">
+	<div class="col-sm-12">
+	
+		<strong>{{ form.non_field_errors }}</strong>
+		{% for hidden_field in form.hidden_fields %}
+		    <strong>{{ hidden_field.errors }}</strong>
+		    {{ hidden_field }}
+		{% endfor %}
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your age group?</p>
+		{{ form.age }}
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>Are you employed?</p>
+		{{ form.employment.errors}}
+		{{ form.employment }}
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your gender?</p>
+		{{ form.gender.errors }}
+		{{ form.gender }}
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your level of education?</p>
+		{{ form.education.errors }}
+		{{ form.education }}
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your marital status?</p>
+		{{ form.married.errors }}
+		{{ form.married }}
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is the most accurate description of the size of the municipality you live in?</p>
+		{{ form.metrosize.errors }}
+		{{ form.metrosize }}
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<hr />
+		<p> The entries below require a rating of your health, mental health, and drug use factors.</p>
+		<hr />
+		<p>&nbsp;</p>
+	</div>
+</div>
+<div class="row gy-5 gx-5">
+	<div class="col-sm-3 surveyquestion">
+		<p>On a scale of 0 to 10, 0 being very poor health and 10 being very good health, please rate your general level of health.</p>
+		{{ form.HEALTH.errors }}
+		{{ form.HEALTH }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>On a scale of 0 to 10, 0 being very poor (or many mental health, behavioral or emotional problems) and 10 being very good (or very few mental health, behavioral or emotional problems), please rate your general level of mental health.</p>
+		{{ form.MENTHLTH.errors }}
+		{{ form.MENTHLTH }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>Have you ever used heroin?</p>
+		{{ form.HEROINEVR.errors }}
+		{{ form.HEROINEVR }}
+
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the last year, approximately how many times have you been treated for drug or alcohol abuse?</p>
+		{{ form.TRTMENT.errors }}
+		{{ form.TRTMENT }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, approximately how many times have you have you had a mental health, emotional or behavioral issue that caused you to be hospitalized, receive outpatient care, visit a clinic, or receive treatment in an emergency room or urgent care facility? </p>
+		{{ form.MHTRTMT.errors }}
+		{{ form.MHTRTMT }}
+
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used tranquilizers?</p>
+		{{ form.TRQLZRS.errors }}
+		{{ form.TRQLZRS }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used sedatives?</p>
+		{{ form.SEDATVS.errors }}
+		{{ form.SEDATVS }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used heroin?</p>
+		{{ form.HEROINUSE.errors }}
+		{{ form.HEROINUSE }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used cocaine or crack cocaine?</p>
+		{{ form.COCAINE.errors }}
+		{{ form.COCAINE }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used amphetamine or methamphetamine?</p>
+		{{ form.AMPHETMN.errors }}
+		{{ form.AMPHETMN }}
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used halucinogens?</p>
+		{{ form.HALUCNG.errors }}
+		{{ form.HALUCNG }}
+	</div>
+		<div class="col-sm-3 surveyquestion">
+		<p>When you're ready, submit your response:</p>
+		<input type = "submit" value = "Submit" class="btn btn-primary btn-lg">
+	</div>
+	<div class="col-sm-12">
+		<hr />
+	</div>
+</div>
+</form>
+{% endblock %}
+
+</div>
+{% endblock %}

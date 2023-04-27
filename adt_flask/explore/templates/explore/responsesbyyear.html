@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block sidebar %}
+{% include 'explore/expsidebar.html' %}
+{% endblock %}
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}explore{% endblock %}">
+
+{% block workspacetitle %}
+    Yearly Historic Survey Responses for {{year}}: ({{ page_obj.paginator.count }} records)
+{% endblock %}
+
+{% block workspacebody %}
+<div class="row">
+    <div class="col">
+        <h6>Historical Survey Responses for the year {{year}}</h6>
+        {% include 'explore/responsetable.html' %}
+    </div>
+</div>
+{% endblock %}
+</div>

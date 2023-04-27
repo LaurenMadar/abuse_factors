@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% load static %}
+
+  {% block sidebar %}
+  {% include 'surveyresults/sr_sidebar.html' %}
+  {% endblock %} 
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}surveyresults{% endblock %}">
+
+{% block workspacetitle %}
+        Explore New Survey Responses: ({{ page_obj.paginator.count }} records)
+{% endblock %}
+
+{% block workspacebody %}
+<div class="row">
+  <div class="col">
+    <h6>New Survey Responses</h6>
+    {% include 'surveyresults/responsetable.html' %}
+  </div>
+</div>
+{% endblock %}
+</div>

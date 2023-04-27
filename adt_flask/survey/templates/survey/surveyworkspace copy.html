@@ -1,0 +1,241 @@
+{% extends "workspace.html" %}
+{% load static %}
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}survey{% endblock %}">
+
+
+{% block workspacetitle %}
+Take Survey
+{% endblock %}
+
+{% block workspacebody %}
+<form method = "post" action="/survey/submit/" class="form-group">
+	<input id="year" type="text" name="year" value="{{ year }}">
+	 {% csrf_token %}
+<div class="row">
+	<div class="col-sm-12">
+		<p>No personal information is collected.</p>
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your age group?</p>
+		{{form.agegroup}}
+		<select class="form-select" aria-label="agegroup" name="agegroup">
+		  <option selected>Select an age group</option>
+		  <option value="1">12 to 17 years old</option>
+		  <option value="2">18 to 25 years old</option>
+		  <option value="3">26 to 35 years old</option>
+		  <option value="4">36 to 49 years old</option>
+		  <option value="5">50 years or older</option>
+		  <option value="0">younger than 12 years</option>
+		</select>
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>Are you employed?</p>
+		<select class="form-select" aria-label="employment" name="employment">
+		  <option selected>Select an answer</option>
+		  <option value="0">No, not employed or unemployed</option>
+		  <option value="1">Employed part time</option>
+		  <option value="2">Employed full time</option>
+		</select>
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your gender?</p>
+		<select class="form-select" aria-label="gender" name="gender">
+		  <option selected>Select an answer</option>
+		  <option value="0">male</option>
+		  <option value="1">female</option>
+		  <option value="2">other</option>
+		</select>
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your level of education?</p>
+		<select class="form-select" aria-label="education" name="education">
+		  <option selected>Select an answer</option>
+		  <option value="1">Highschool or less</option>
+		  <option value="2">Highschool graduate</option>
+		  <option value="3">Some college</option>
+		  <option value="4">College graduate</option>
+		  <option value="5">other</option>
+		</select>
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is your marital status?</p>
+		<select class="form-select" aria-label="marital" name="marital">
+		  <option selected>Select an answer</option>
+		  <option value="0">Not married</option>
+		  <option value="1">Widowed</option>
+		  <option value="2">Divorced</option>
+		  <option value="3">Married</option>
+		  <option value="4">Other</option>
+		</select>
+	</div>
+	<div class="col-sm-5 surveyquestion">
+		<p>What is the most accurate description of the size of the municipality you live in?</p>
+		<select class="form-select" aria-label="citymetro" name="citymetro">
+		  <option selected>Select an answer</option>
+		  <option value="0">Rural</option>
+		  <option value="1">Small town/city</option>
+		  <option value="2">Large city/urban area</option>
+		</select>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<hr />
+		<p> The entries below require a rating of your health, mental health, and drug use factors.</p>
+		<hr />
+		<p>&nbsp;</p>
+	</div>
+</div>
+<div class="row gy-5 gx-5">
+	<div class="col-sm-3 surveyquestion">
+		<p>On a scale of 0 to 10, 0 being very poor health and 10 being very good health, please rate your general level of health.</p>
+		<select class="form-select" aria-label="HEALTH" name="HEALTH">
+		  <option selected>Select a rating</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>On a scale of 0 to 10, 0 being very poor (or many mental health, behavioral or emotional problems) and 10 being very good (or very few mental health, behavioral or emotional problems), please rate your general level of mental health.</p>
+		<select class="form-select" aria-label="MENTHLTH" name="MENTHLTH">
+		  <option selected>Select a rating</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>Have you ever used heroin?</p>
+		<select class="form-select" aria-label="HEROINEVR" name="HEROINEVR">
+		  <option selected>Select an answer</option>
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the last year, approximately how many times have you been treated for drug or alcohol abuse?</p>
+		<select class="form-select" aria-label="TRTMENT" name="TRTMENT">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, approximately how many times have you have you had a mental health, emotional or behavioral issue that caused you to be hospitalized, receive outpatient care, visit a clinic, or receive treatment in an emergency room or urgent care facility? </p>
+		<select class="form-select" aria-label="MHTRTMT" name="MHTRTMT">
+		  <option selected>Select a rating</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		  <option value="9">9</option>
+		  <option value="10">10</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used tranquilizers?</p>
+		<select class="form-select" aria-label="TRQLZRS" name="TRQLZRS">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used sedatives?</p>
+		<select class="form-select" aria-label="SEDATVS" name="SEDATVS">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used heroin?</p>
+		<select class="form-select" aria-label="HEROINUSE" name="HEROINUSE">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used cocaine or crack cocaine?</p>
+		<select class="form-select" aria-label="COCAINE" name="COCAINE">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used amphetamine or methamphetamine?</p>
+		<select class="form-select" aria-label="AMPHETMN" name="AMPHETMN">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-3 surveyquestion">
+		<p>In the past year, how many times have you used halucinogens?</p>
+		<select class="form-select" aria-label="HALUCNG" name="HALUCNG">
+		  <option selected>Select an answer</option>
+		  <option value="0">0</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		</select>
+	</div>
+	<div class="col-sm-12">
+		<input type = "submit" value = "Submit">
+	</div>
+</div>
+</form>
+{% endblock %}
+
+</div>

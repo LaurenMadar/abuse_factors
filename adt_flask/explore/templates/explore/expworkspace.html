@@ -1,0 +1,20 @@
+{% extends "workspace.html" %}
+{% load static %}
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}explore{% endblock %}">
+
+
+{% block workspacetitle %}
+				Explore Historic Survey Responses: ({{ page_obj.paginator.count }} records)
+{% endblock %}
+
+
+{% block workspacebody %}
+<div class="row">
+	<div class="col">
+		<h6>All Historical Survey Responses </h6>
+		{% include 'explore/responsetable.html' %}
+	</div>
+</div>
+{% endblock %}
+</div>

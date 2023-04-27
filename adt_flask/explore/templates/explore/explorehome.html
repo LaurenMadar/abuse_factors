@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+{% block sidebar %}
+{% include 'explore/expsidebar.html' %}
+{% endblock %}
+
+
+
+
+
+{% block workspace %}
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}explore{% endblock %}">
+{% include 'explore/expworkspace.html' %}
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+  {% block sidebar %}
+  {% include 'survey/surveysidebar.html' %}
+  {% endblock %} 
+
+{% block workspace %}
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}survey{% endblock %}">
+{% include 'survey/surveyworkspace.html' %}
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,26 @@
+{% extends "workspace.html" %}
+{% load static %}
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}survey{% endblock %}">
+
+
+{% block workspacetitle %}
+Take Survey
+{% endblock %}
+
+{% block workspacebody %}
+<form method = "get" action="submit/" enctype="multipart/form-data" class="form-group" novalidate>
+
+<div class="row">
+	<div class="col-sm-12">
+		<p>No personal information is collected.</p>
+	</div>
+	
+	<div class="col-sm-12">
+		<input type = "submit" value = "Take the Survey!">
+	</div>
+</div>
+</form>
+{% endblock %}
+
+</div>

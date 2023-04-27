@@ -1,0 +1,14 @@
+{% extends "explore/responsedetail.html" %}
+{% load static %}
+
+  {% block sidebar %}
+  {% include 'survey/unlockedsidebar.html' %}
+  {% endblock %} 
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}survey{% endblock %}">
+
+{% block workspacetitle %}
+Your response was saved with ID: {{ response.id }} and the following data:
+{% endblock %}
+
+</div>

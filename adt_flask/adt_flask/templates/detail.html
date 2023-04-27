@@ -1,0 +1,57 @@
+{% load static %}
+
+{% block workspace %}
+<div class="container fluid d-flex flex-column flex-grow-0">
+  <div class="d-flex flex-row flex-grow-0">
+   <div class="col">
+    <h4 class="pb-2 border-bottom">
+     {% block workspacetitle %}
+     Survey Response ID {{ response.id }} 
+     {% endblock %}
+   </h4>
+ </div>
+</div>
+{% block workspacebody %}
+<div class="d-flex flex-row flex-grow-1">
+	<div class="col">
+    <dl class="row">
+      <dt class="col-sm-2">Year</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.year}}</p>
+      </dd>
+      <dt class="col-sm-2">Id</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.id}}</p>
+      </dd>
+      <dt class="col-sm-2">Gender</dt>
+      <dd class="col-sm-4">
+        <p>{{ resp.gender }}</p>
+      </dd>
+      <dt class="col-sm-2">Age Group</dt>
+      <dd class="col-sm-4">
+        <p>{{ resp.age }}</p>
+      </dd>
+      <dt class="col-sm-2">Education Level</dt>
+      <dd class="col-sm-4">
+        <p>{{ resp.education }}</p>
+      </dd>
+      <dt class="col-sm-2">Marital Status</dt>
+      <dd class="col-sm-4">
+        <p>{{ resp.married }}</p>
+      </dd>
+      <dt class="col-sm-2">Employment Status</dt>
+      <dd class="col-sm-4">
+        <p>{{ resp.employment }}</p>
+      </dd>
+      <dt class="col-sm-2">Metro Size</dt>
+      <dd class="col-sm-4">
+        <p>{{ resp.metrosize }}</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+{% endblock %}
+</div>
+{% endblock %}
+
+

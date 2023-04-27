@@ -1,0 +1,109 @@
+{% extends "home.html" %}
+{% load static %}
+
+  {% block sidebar %}
+  {% include 'explore/expsidebar.html' %}
+  {% endblock %} 
+
+<div class="final-workspace container-fluid d-flex {% block workspaceclass %}explore{% endblock %}">
+
+
+
+
+{% block workspacetitle %}
+Detail view
+{% endblock %}
+
+  {% block workspacebody %}
+  <div class="d-flex flex-row flex-grow-1">
+  <div class="col">
+    <dl class="row">
+      <dt class="col-sm-2">Year</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.year}}</p>
+      </dd>
+      <dt class="col-sm-2">Id</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.id}}</p>
+      </dd>
+      <dt class="col-sm-2">Gender</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.get_gender_display }}</p>
+      </dd>
+      <dt class="col-sm-2">Age Group</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.get_age_display }}</p>
+      </dd>
+      <dt class="col-sm-2">Education Level</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.get_education_display}}</p>
+      </dd>
+      <dt class="col-sm-2">Marital Status</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.get_married_display}}</p>
+      </dd>
+      <dt class="col-sm-2">Employment Status</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.get_employment_display}}</p>
+      </dd>
+      <dt class="col-sm-2">Metro Size</dt>
+      <dd class="col-sm-4">
+        <p>{{ response.get_metrosize_display}}</p>
+      </dd>
+    </dl>
+    <hr />
+    <dl class="row">
+      <dt class="col-sm-7">Health self-rating (0 - 10)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_HEALTH_display }}</p>
+      </dd>
+      <dt class="col-sm-7">Mental Health self-rating (0 - 10)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_MENTHLTH_display }}</p>
+      </dd>
+      <dt class="col-sm-7">Ever taken Heroin? (No, Yes)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_HEROINEVR_display }}</p>
+      </dd>
+      <dt class="col-sm-7">How many hospitalization events in the last year? (0 - 10)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_TRTMENT_display }}</p>
+      </dd>
+      <dt class="col-sm-7">How many mental health treatments in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_MHTRTMT_display}}</p>
+      </dd>
+      <dt class="col-sm-7">How many uses of Tranquilizers in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_TRQLZRS_display}}</p>
+      </dd>
+      <dt class="col-sm-7">How many uses of Sedatives in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_SEDATVS_display}}</p>
+      </dd>
+         <dt class="col-sm-7">How many uses of Cocaine/Crack Cocaine in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_COCAINE_display}}</p>
+      </dd>
+         <dt class="col-sm-7">How many uses of Amphetamine/Methamphetamine in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_AMPHETMN_display}}</p>
+      </dd>
+         <dt class="col-sm-7">How many uses of Heroin in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_HEROINUSE_display}}</p>
+      </dd>
+         <dt class="col-sm-7">How many uses of Halucinogens in the last year? (0 - 5)</dt>
+      <dd class="col-sm-5">
+        <p>{{ response.get_HALUCNG_display}}</p>
+      </dd>
+   
+    </dl>
+    
+  </div>
+</div>
+  {% endblock %}
+</div>
+
+
+
